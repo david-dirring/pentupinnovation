@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pent-Up Innovation | Your Local Technology Builder</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #1a2332;
+            --slate: #2d3748;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --accent-light: #eff6ff;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--slate);
+            line-height: 1.7;
+            background: var(--white);
+        }
+        h1, h2, h3, h4, nav, .btn, .tag, .step-label, footer, .card-tag, .hero-greeting, .trust-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* NAV */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 5%;
+            background: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--accent); }
+        nav ul { list-style: none; display: flex; gap: 2rem; }
+        nav a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--accent); }
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white) !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+        .nav-cta:hover { background: var(--accent-dark); }
+
+        /* HERO */
+        .hero {
+            padding: 5rem 5% 4rem;
+            max-width: 800px;
+        }
+        .hero-greeting {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 580px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            margin-left: 0.75rem;
+        }
+        .btn-outline:hover { background: var(--accent); color: var(--white); }
+
+        /* TRUST BAR */
+        .trust {
+            display: flex;
+            gap: 2.5rem;
+            padding: 2.5rem 5%;
+            background: var(--light);
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            background: var(--accent-light);
+        }
+        .trust-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--slate);
+        }
+
+        /* SECTIONS */
+        .section { padding: 5rem 5%; }
+        .section-alt { background: var(--light); }
+        .section-label {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+        .section-sub {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 560px;
+        }
+
+        /* SERVICES */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+        }
+        .service-card {
+            background: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.2s;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.08);
+            transform: translateY(-2px);
+        }
+        .card-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+        .card-tag.topline {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+        }
+        .card-tag.bottomline {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        .service-card p { color: var(--gray); font-size: 0.95rem; }
+
+        /* STORY SECTION */
+        .story {
+            padding: 5rem 5%;
+            background: var(--navy);
+            color: var(--white);
+        }
+        .story-inner {
+            max-width: 700px;
+        }
+        .story h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+        .story p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #94a3b8;
+            margin-bottom: 1.25rem;
+        }
+        .story strong { color: var(--accent); font-weight: 700; }
+
+        /* PROCESS */
+        .process-steps {
+            max-width: 700px;
+        }
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            align-items: flex-start;
+        }
+        .step-marker {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: var(--accent-light);
+        }
+        .step-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+        .step h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.25rem;
+        }
+        .step p { color: var(--gray); font-size: 0.95rem; }
+
+        /* CTA */
+        .cta {
+            padding: 5rem 5%;
+            background: var(--navy);
+            text-align: center;
+            color: var(--white);
+        }
+        .cta h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+        .cta p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 1rem;
+        }
+        .cta .contact-line {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+        .cta .contact-line a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .cta .contact-line a:hover { text-decoration: underline; }
+        .cta .btn-primary { background: var(--accent); }
+        .cta .btn-primary:hover { background: var(--accent-dark); }
+
+        /* FOOTER */
+        footer {
+            padding: 2rem 5%;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.85rem;
+            border-top: 1px solid #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero { padding: 3rem 5%; }
+            nav ul { display: none; }
+            .btn-outline { margin-left: 0; margin-top: 0.75rem; display: inline-block; }
+            .trust { gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="logo">Pent-Up <span>Innovation</span></a>
+    <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-greeting">Hey, we're Pent-Up Innovation.</div>
+    <h1>Your business deserves technology that actually works for you.</h1>
+    <p>We're not consultants who hand you a binder and wish you luck. We're builders who sit down next to you, understand your business, and create the tools you need to grow.</p>
+    <a href="#contact" class="btn btn-primary">Let's Talk About Your Business</a>
+    <a href="#services" class="btn btn-outline">What We Build</a>
+</section>
+
+<div class="trust">
+    <div class="trust-item">
+        <div class="trust-icon">&#128736;</div>
+        <div class="trust-text">Builders, not consultants</div>
+    </div>
+    <div class="trust-item">
+        <div class="trust-icon">&#128273;</div>
+        <div class="trust-text">You own everything</div>
+    </div>
+    <div class="trust-item">
+        <div class="trust-icon">&#9889;</div>
+        <div class="trust-text">Results in days, not months</div>
+    </div>
+    <div class="trust-item">
+        <div class="trust-icon">&#129309;</div>
+        <div class="trust-text">No lock-in, ever</div>
+    </div>
+</div>
+
+<section class="section section-alt" id="services">
+    <div class="section-label">What We Build</div>
+    <h2 class="section-title">Real tools for real businesses.</h2>
+    <p class="section-sub">We focus on two things: helping you make more money and helping you spend less time on the stuff that drains you.</p>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="card-tag topline">Top Line</div>
+            <h3>Websites That Convert</h3>
+            <p>Beautiful, fast, mobile-first sites built to turn visitors into customers. No page builder headaches, no bloated hosting fees. Clean code you own outright.</p>
+        </div>
+        <div class="service-card">
+            <div class="card-tag bottomline">Bottom Line</div>
+            <h3>Workflow Automation</h3>
+            <p>We find the repetitive tasks eating your team's hours and automate them. Scheduling, invoicing, follow-ups, data entry&mdash;handled.</p>
+        </div>
+        <div class="service-card">
+            <div class="card-tag topline">Top Line</div>
+            <h3>Sales &amp; Lead Systems</h3>
+            <p>CRM setup, lead capture forms, email sequences, and follow-up pipelines. We build the system that keeps customers coming back.</p>
+        </div>
+        <div class="service-card">
+            <div class="card-tag bottomline">Bottom Line</div>
+            <h3>Dashboards &amp; Reports</h3>
+            <p>See your numbers in real time. We connect your tools and build dashboards that help you make smarter decisions, faster.</p>
+        </div>
+        <div class="service-card">
+            <div class="card-tag topline">Top Line</div>
+            <h3>AI Assistants &amp; Chatbots</h3>
+            <p>Smart, friendly AI tools that handle customer questions, qualify leads, and free up your team. Built for your industry and your voice.</p>
+        </div>
+        <div class="service-card">
+            <div class="card-tag bottomline">Bottom Line</div>
+            <h3>System Integrations</h3>
+            <p>Your POS, CRM, calendar, email, and accounting should be one smooth machine. We connect the dots so you stop copying and pasting.</p>
+        </div>
+    </div>
+</section>
+
+<section class="story">
+    <div class="story-inner">
+        <h2>Why "Pent-Up"?</h2>
+        <p>Because every local business we talk to has <strong>pent-up potential</strong> trapped behind outdated tools, clunky processes, and technology that was never built for them.</p>
+        <p>We started this company because we believe the best businesses in any town shouldn't be held back by tech they can't afford or can't understand. <strong>You don't need a six-figure IT budget.</strong> You need a builder who gets it.</p>
+        <p>We show up, we learn your business, and we build the thing that makes the biggest difference. Then we hand you the keys.</p>
+    </div>
+</section>
+
+<section class="section" id="process">
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title">Simple, hands-on, and fast.</h2>
+    <p class="section-sub">No endless discovery phases. No mystery. Here's exactly what it looks like to work with us.</p>
+    <div class="process-steps">
+        <div class="step">
+            <div class="step-marker">&#9749;</div>
+            <div>
+                <div class="step-label">Step One</div>
+                <h3>A Conversation Over Coffee</h3>
+                <p>We sit down (in person or on a call) and learn about your business. What's working? What's painful? Where's the opportunity?</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-marker">&#128221;</div>
+            <div>
+                <div class="step-label">Step Two</div>
+                <h3>A Clear Plan, Not a Proposal</h3>
+                <p>We identify the single highest-impact thing we can build and tell you exactly what it'll take. Plain language, clear price, no surprises.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-marker">&#128736;</div>
+            <div>
+                <div class="step-label">Step Three</div>
+                <h3>We Build It Together</h3>
+                <p>You'll see progress in days. We work alongside you, check in often, and make sure we're building exactly what you need.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-marker">&#127381;</div>
+            <div>
+                <div class="step-label">Step Four</div>
+                <h3>It's Yours, Forever</h3>
+                <p>We hand you everything. Full training, clear documentation, and the confidence to run it yourself. No monthly retainers required.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta" id="contact">
+    <h2>Let's figure out what your business needs.</h2>
+    <p>No pitch, no pressure. Just a conversation about where technology can help you the most.</p>
+    <p class="contact-line">Reach out to the owner, David Dirring, at <a href="mailto:david@pentupinnovation.com">david@pentupinnovation.com</a></p>
+    <a href="mailto:david@pentupinnovation.com" class="btn btn-primary">Start a Conversation</a>
+</section>
+
+<footer>
+    &copy; 2026 Pent-Up Innovation. Technology built by hand, for businesses that matter.
+</footer>
+
+</body>
+</html>
