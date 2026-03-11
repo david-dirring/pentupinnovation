@@ -4,387 +4,325 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dixie's Right Hand Paw | SMS Sign-Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --navy: #1a2332;
-            --slate: #2d3748;
-            --accent: #3b82f6;
-            --accent-dark: #2563eb;
-            --accent-light: #eff6ff;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --white: #ffffff;
-            --paw-warm: #7c3aed;
-            --paw-warm-light: #f5f3ff;
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --text-light: #555;
+            --text-muted: #888;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --card-bg: #ffffff;
+            --border: #e5e7eb;
             --success: #16a34a;
-            --success-light: #f0fdf4;
-            --error: #dc2626;
+            --radius: 12px;
         }
 
         body {
-            font-family: Georgia, 'Times New Roman', serif;
-            color: var(--slate);
-            line-height: 1.7;
-            background: var(--light);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        h1, h2, h3, h4, nav, .btn, label, footer, .badge, .consent-text, input, .success-message {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
-        /* NAV */
-        nav {
+        /* ── Header ── */
+        .site-header {
+            padding: 20px 24px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 5%;
-            background: var(--white);
-            border-bottom: 1px solid #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-        .logo img {
-            height: 55px;
-            width: auto;
-            margin: -5px 0;
-        }
-        .nav-back {
-            text-decoration: none;
-            color: var(--gray);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        .site-header a { text-decoration: none; }
+        .site-header img { height: 40px; }
+        .back-link {
+            font-size: 14px;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            color: var(--accent);
         }
-        .nav-back:hover { color: var(--accent); }
+        .back-link:hover { text-decoration: underline; }
 
-        /* PAGE */
-        .page-wrapper {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 3rem 5%;
-        }
-        .form-container {
-            background: var(--white);
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 3rem;
-            max-width: 520px;
-            width: 100%;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+        /* ── Main ── */
+        .page-container {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
         }
 
-        .badge {
+        .page-badge {
             display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0.35rem 0.85rem;
-            border-radius: 6px;
-            margin-bottom: 1.25rem;
-            background: var(--paw-warm-light);
-            color: var(--paw-warm);
-        }
-        .form-container h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--navy);
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-        }
-        .form-container .subtitle {
-            color: var(--gray);
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
-        }
-
-        /* FORM */
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-        label {
-            display: block;
-            font-size: 0.9rem;
+            font-size: 12px;
             font-weight: 600;
-            color: var(--slate);
-            margin-bottom: 0.4rem;
-        }
-        input[type="text"],
-        input[type="tel"] {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: var(--slate);
-            transition: border-color 0.2s;
-            background: var(--white);
-        }
-        input[type="text"]:focus,
-        input[type="tel"]:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
-        }
-        input::placeholder {
-            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            background: rgba(37, 99, 235, 0.08);
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 16px;
         }
 
-        /* CONSENT CHECKBOX */
-        .consent-group {
-            display: flex;
-            gap: 0.75rem;
-            align-items: flex-start;
-            margin: 1.5rem 0;
-            padding: 1.25rem;
-            background: var(--light);
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 8px;
         }
-        .consent-group input[type="checkbox"] {
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        /* ── Card / Form ── */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+
+        .form-group { margin-bottom: 18px; }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"] {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 15px;
+            font-family: inherit;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .error-text {
+            display: none;
+            font-size: 12px;
+            color: #dc2626;
+            margin-top: 4px;
+        }
+
+        /* ── Checkbox ── */
+        .consent-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .consent-row input[type="checkbox"] {
             margin-top: 3px;
             width: 18px;
             height: 18px;
             flex-shrink: 0;
             accent-color: var(--accent);
-            cursor: pointer;
         }
-        .consent-text {
-            font-size: 0.85rem;
-            color: var(--gray);
-            line-height: 1.6;
+        .consent-row span {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.55;
+        }
+        .consent-row a {
+            color: var(--accent);
+            text-decoration: underline;
         }
 
-        /* BUTTON */
-        .btn {
+        /* ── Button ── */
+        .btn-primary {
             display: block;
             width: 100%;
-            padding: 0.95rem 2rem;
-            border-radius: 8px;
+            padding: 12px;
+            font-size: 15px;
             font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.2s;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-        .btn-primary {
+            font-family: inherit;
+            color: #fff;
             background: var(--accent);
-            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
         }
-        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+        .btn-primary:hover { background: var(--accent-hover); }
         .btn-primary:disabled {
-            background: #94a3b8;
+            background: #c4c4c4;
             cursor: not-allowed;
-            transform: none;
         }
 
         .form-note {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #94a3b8;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 16px;
+            line-height: 1.55;
         }
 
-        /* ERROR */
-        .error-msg {
-            color: var(--error);
-            font-size: 0.8rem;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin-top: 0.3rem;
+        /* ── Success state ── */
+        .success-msg {
             display: none;
-        }
-        .error-msg.visible { display: block; }
-        input.input-error { border-color: var(--error); }
-
-        /* SUCCESS STATE */
-        .success-message {
             text-align: center;
-            padding: 2rem 0;
-            display: none;
+            padding: 32px 0;
         }
-        .success-message.visible { display: block; }
         .success-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            background: var(--success-light);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.25rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--success);
+            font-size: 24px;
+            margin-bottom: 16px;
         }
-        .success-message h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 0.5rem;
+        .success-msg h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
-        .success-message p {
-            color: var(--gray);
-            font-size: 1rem;
+        .success-msg p {
+            font-size: 14px;
+            color: var(--text-light);
         }
 
-        .form-content.hidden { display: none; }
-
-        /* FOOTER */
-        footer {
-            padding: 2rem 5%;
+        /* ── Footer ── */
+        .site-footer {
             text-align: center;
-            color: var(--gray);
-            font-size: 0.85rem;
-            border-top: 1px solid #e2e8f0;
-            background: var(--white);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 32px 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: 48px;
         }
-        footer a {
+        .site-footer a {
             color: var(--accent);
             text-decoration: none;
         }
-        footer a:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 2rem 1.5rem;
-                border-radius: 12px;
-            }
-            .form-container h1 { font-size: 1.5rem; }
-            .page-wrapper { padding: 2rem 4%; align-items: flex-start; }
+        .site-footer a:hover { text-decoration: underline; }
+        .footer-links-row {
+            margin-bottom: 12px;
+        }
+        .footer-links-row a {
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="/" class="logo"><img src="logo.png" alt="Pent-Up Innovation"></a>
-    <a href="/" class="nav-back">&larr; Back to Home</a>
-</nav>
+    <!-- Header -->
+    <header class="site-header">
+        <a href="https://pentupinnovation.com/">
+            <img src="https://pentupinnovation.com/logo.png" alt="Pent-Up Innovation">
+        </a>
+        <a href="https://pentupinnovation.com/" class="back-link">&larr; Back to Home</a>
+    </header>
 
-<div class="page-wrapper">
-    <div class="form-container">
-        <div class="form-content" id="formContent">
-            <div class="badge">Pet Spa</div>
-            <h1>Dixie's Right Hand Paw</h1>
-            <p class="subtitle">Sign up for appointment reminders and updates via text message.</p>
+    <!-- Main -->
+    <main class="page-container">
+        <span class="page-badge">Pet Spa</span>
+        <h1>Dixie's Right Hand Paw</h1>
+        <p class="subtitle">Sign up for appointment reminders and updates via text message.</p>
 
-            <form id="consentForm" novalidate>
+        <div class="card">
+
+            <!-- Form -->
+            <div id="form-section">
                 <div class="form-group">
-                    <label for="fullName">Your Name</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Jane Smith" required>
-                    <div class="error-msg" id="nameError">Please enter your name.</div>
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Jane Smith" required>
+                    <p class="error-text" id="name-error">Please enter your name.</p>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
-                    <div class="error-msg" id="phoneError">Please enter a valid phone number.</div>
+                    <input type="tel" id="phone" placeholder="(770) 555-1234" required>
+                    <p class="error-text" id="phone-error">Please enter a valid phone number.</p>
                 </div>
 
-                <div class="consent-group">
-                    <input type="checkbox" id="smsConsent" name="smsConsent" required>
-                    <div class="consent-text">
-                        By checking this box, I consent to receive SMS messages from <strong>Dixie's Right Hand Paw</strong> (Pet Spa) regarding appointments, reminders, promotions, and customer support. Message &amp; data rates may apply. Message frequency varies. Reply <strong>STOP</strong> to opt out at any time. Reply <strong>HELP</strong> for help.
-                    </div>
+                <div class="consent-row">
+                    <input type="checkbox" id="consent">
+                    <span>
+                        By checking this box, I consent to receive automated SMS messages from
+                        <strong>Dixie's Right Hand Paw</strong> (Pet Spa) regarding appointment confirmations,
+                        reminders, scheduling changes, and customer support.
+                        Message &amp; data rates may apply. Message frequency varies.
+                        Reply <strong>STOP</strong> to opt out at any time.
+                        Reply <strong>HELP</strong> for help.
+                        Consent is not a condition of purchase.
+                        I have read and agree to the
+                        <a href="https://pentupinnovation.com/dixie-privacy-policy.html">Privacy Policy</a> and
+                        <a href="https://pentupinnovation.com/dixie-terms.html">Terms &amp; Conditions</a>.
+                    </span>
                 </div>
-                <div class="error-msg" id="consentError" style="margin-top: -0.75rem; margin-bottom: 1rem;">You must agree to receive SMS messages.</div>
 
-                <button type="submit" class="btn btn-primary">Sign Me Up</button>
+                <p class="error-text" id="consent-error" style="margin-bottom:12px;">You must agree to receive SMS messages.</p>
 
-                <p class="form-note">We respect your privacy and will never share your number.</p>
-            </form>
+                <button class="btn-primary" id="submit-btn" disabled>Sign Me Up</button>
+
+                <p class="form-note">
+                    Message frequency varies. Message and data rates may apply. Reply STOP to cancel, HELP for help.
+                    Dixie's Right Hand Paw is operated by Pentup Innovation LLC.
+                </p>
+            </div>
+
+            <!-- Success -->
+            <div class="success-msg" id="success-section">
+                <div class="success-icon">✓</div>
+                <h2>You're all set!</h2>
+                <p>Thanks for signing up. You'll receive a confirmation text shortly from Dixie's Right Hand Paw.</p>
+            </div>
+
         </div>
+    </main>
 
-        <div class="success-message" id="successMessage">
-            <div class="success-icon">&#10003;</div>
-            <h2>You're all set!</h2>
-            <p>Thanks for signing up. You'll receive a confirmation text shortly from Dixie's Right Hand Paw.</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links-row">
+            <a href="https://pentupinnovation.com/dixie-privacy-policy.html">Privacy Policy</a>
+            <a href="https://pentupinnovation.com/dixie-terms.html">Terms &amp; Conditions</a>
         </div>
-    </div>
-</div>
+        &copy; 2026 Dixie's Right Hand Paw &middot; Built by <a href="https://pentupinnovation.com">Pent-Up Innovation</a>
+    </footer>
 
-<footer>
-    &copy; 2026 Dixie's Right Hand Paw &middot; Built by <a href="https://pentupinnovation.com">Pent-Up Innovation</a>
-</footer>
+    <script>
+        const consentCheckbox = document.getElementById('consent');
+        const submitBtn = document.getElementById('submit-btn');
+        const nameInput = document.getElementById('name');
+        const phoneInput = document.getElementById('phone');
 
-<script>
-    // Phone number formatting
-    const phoneInput = document.getElementById('phone');
-    phoneInput.addEventListener('input', function(e) {
-        let val = e.target.value.replace(/\D/g, '');
-        if (val.length > 10) val = val.slice(0, 10);
-        if (val.length >= 7) {
-            val = '(' + val.slice(0, 3) + ') ' + val.slice(3, 6) + '-' + val.slice(6);
-        } else if (val.length >= 4) {
-            val = '(' + val.slice(0, 3) + ') ' + val.slice(3);
-        } else if (val.length >= 1) {
-            val = '(' + val;
-        }
-        e.target.value = val;
-    });
-
-    // Form validation and submission
-    document.getElementById('consentForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        let valid = true;
-
-        // Reset errors
-        document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('visible'));
-        document.querySelectorAll('input').forEach(el => el.classList.remove('input-error'));
-
-        const name = document.getElementById('fullName');
-        const phone = document.getElementById('phone');
-        const consent = document.getElementById('smsConsent');
-
-        if (!name.value.trim()) {
-            document.getElementById('nameError').classList.add('visible');
-            name.classList.add('input-error');
-            valid = false;
+        function checkForm() {
+            const valid = consentCheckbox.checked
+                && nameInput.value.trim().length > 0
+                && phoneInput.value.trim().length > 0;
+            submitBtn.disabled = !valid;
         }
 
-        const digits = phone.value.replace(/\D/g, '');
-        if (digits.length < 10) {
-            document.getElementById('phoneError').classList.add('visible');
-            phone.classList.add('input-error');
-            valid = false;
-        }
+        consentCheckbox.addEventListener('change', checkForm);
+        nameInput.addEventListener('input', checkForm);
+        phoneInput.addEventListener('input', checkForm);
 
-        if (!consent.checked) {
-            document.getElementById('consentError').classList.add('visible');
-            valid = false;
-        }
-
-        if (!valid) return;
-
-        // TODO: Send data to your backend / Formspree / Google Sheets / etc.
-        // Example payload:
-        // const data = {
-        //     name: name.value.trim(),
-        //     phone: phone.value.trim(),
-        //     consentedAt: new Date().toISOString()
-        // };
-
-        // Show success
-        document.getElementById('formContent').classList.add('hidden');
-        document.getElementById('successMessage').classList.add('visible');
-    });
-</script>
-
+        submitBtn.addEventListener('click', function () {
+            document.getElementById('form-section').style.display = 'none';
+            document.getElementById('success-section').style.display = 'block';
+        });
+    </script>
 </body>
 </html>
