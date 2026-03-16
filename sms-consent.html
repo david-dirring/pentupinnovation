@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentup Innovation | SMS Consent</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header a {
+            text-decoration: none;
+        }
+
+        .header img {
+            height: 40px;
+        }
+
+        .back-link {
+            color: #4A90D9;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            padding: 40px 32px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e8f0fe;
+            color: #4A90D9;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d0d0d0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus {
+            border-color: #4A90D9;
+            box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.1);
+        }
+
+        .error-text {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* Consent checkbox */
+        .consent-group {
+            margin: 24px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .consent-group input[type="checkbox"] {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            accent-color: #4A90D9;
+        }
+
+        .consent-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .consent-text strong {
+            color: #333;
+        }
+
+        .consent-text a {
+            color: #4A90D9;
+            text-decoration: none;
+        }
+
+        .consent-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #4A90D9;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #3a7bc8;
+        }
+
+        .btn-submit:disabled {
+            background: #a0c4e8;
+            cursor: not-allowed;
+        }
+
+        /* Fine print */
+        .fine-print {
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        /* Success state */
+        .success-card {
+            display: none;
+            text-align: center;
+            padding: 48px 32px;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background: #4A90D9;
+            color: #fff;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .success-card h2 {
+            font-size: 22px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .success-card p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        /* Info section */
+        .info-section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #eee;
+        }
+
+        .info-section h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            font-size: 13px;
+            color: #555;
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: "•";
+            position: absolute;
+            left: 4px;
+            color: #4A90D9;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 600px;
+            margin: 24px auto 40px;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .footer a {
+            color: #4A90D9;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .footer-links {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            margin: 0 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <a href="https://pentupinnovation.com/">
+            <img src="https://pentupinnovation.com/logo.png" alt="Pent-Up Innovation">
+        </a>
+        <a href="https://pentupinnovation.com/" class="back-link">← Back to Home</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Form Card -->
+        <div class="card" id="formCard">
+            <span class="badge">SMS Messaging</span>
+            <h1>SMS Consent</h1>
+            <p class="subtitle">Sign up to receive text messages from a Pentup Innovation-powered business.</p>
+
+            <form id="consentForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                    <p class="error-text" id="nameError">Please enter your name.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="(555) 555-5555" required>
+                    <p class="error-text" id="phoneError">Please enter a valid phone number.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="business">Business Name (optional)</label>
+                    <input type="text" id="business" placeholder="Which business referred you?">
+                </div>
+
+                <div class="consent-group">
+                    <input type="checkbox" id="consent" required>
+                    <div class="consent-text">
+                        By checking this box, I consent to receive automated SMS messages from
+                        <strong>Pentup Innovation LLC</strong> and its client businesses regarding
+                        appointment confirmations, reminders, scheduling changes, and customer support.
+                        Message & data rates may apply. Message frequency varies.
+                        Reply <strong>STOP</strong> to opt out at any time.
+                        Reply <strong>HELP</strong> for help.
+                        Consent is not a condition of purchase.
+                        I have read and agree to the
+                        <a href="https://pentupinnovation.com/privacy-policy.html">Privacy Policy</a> and
+                        <a href="https://pentupinnovation.com/terms.html">Terms &amp; Conditions</a>.
+                    </div>
+                </div>
+                <p class="error-text" id="consentError" style="margin-top:-12px;margin-bottom:12px;">You must agree to receive SMS messages.</p>
+
+                <button type="submit" class="btn-submit">Sign Me Up</button>
+            </form>
+
+            <p class="fine-print">
+                Message frequency varies. Message and data rates may apply.<br>
+                Reply STOP to cancel, HELP for help.
+            </p>
+
+            <!-- What to expect -->
+            <div class="info-section">
+                <h3>What messages will I receive?</h3>
+                <ul class="info-list">
+                    <li>Appointment confirmations and reminders</li>
+                    <li>Scheduling updates and changes</li>
+                    <li>Customer care and support responses</li>
+                    <li>Responses to your text inquiries</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h3>Your rights</h3>
+                <ul class="info-list">
+                    <li>Reply <strong>STOP</strong> at any time to unsubscribe</li>
+                    <li>Reply <strong>HELP</strong> for assistance</li>
+                    <li>Consent is not required to make a purchase</li>
+                    <li>We never share your phone number with third parties for marketing</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Success Card -->
+        <div class="card success-card" id="successCard">
+            <div class="success-icon">✓</div>
+            <h2>You're all set!</h2>
+            <p>Thanks for signing up. You'll receive a confirmation text shortly.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-links">
+            <a href="https://pentupinnovation.com/privacy-policy.html">Privacy Policy</a>
+            <a href="https://pentupinnovation.com/terms.html">Terms &amp; Conditions</a>
+        </div>
+        <p>© 2026 <a href="https://pentupinnovation.com">Pentup Innovation LLC</a></p>
+    </div>
+
+    <script>
+        // Phone number formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length > 0) {
+                if (val.length <= 3) {
+                    val = '(' + val;
+                } else if (val.length <= 6) {
+                    val = '(' + val.substring(0,3) + ') ' + val.substring(3);
+                } else {
+                    val = '(' + val.substring(0,3) + ') ' + val.substring(3,6) + '-' + val.substring(6,10);
+                }
+            }
+            e.target.value = val;
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            let valid = true;
+
+            const name = document.getElementById('name');
+            const phone = document.getElementById('phone');
+            const consent = document.getElementById('consent');
+
+            // Reset errors
+            document.querySelectorAll('.error-text').forEach(el => el.style.display = 'none');
+
+            if (!name.value.trim()) {
+                document.getElementById('nameError').style.display = 'block';
+                valid = false;
+            }
+
+            const phoneDigits = phone.value.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                document.getElementById('phoneError').style.display = 'block';
+                valid = false;
+            }
+
+            if (!consent.checked) {
+                document.getElementById('consentError').style.display = 'block';
+                valid = false;
+            }
+
+            if (valid) {
+                // In production, this would POST to your backend / Firebase
+                // For now, just show success state
+                document.getElementById('formCard').querySelector('form').style.display = 'none';
+                document.querySelector('.fine-print').style.display = 'none';
+                document.querySelectorAll('.info-section').forEach(el => el.style.display = 'none');
+                document.getElementById('formCard').style.display = 'none';
+                document.getElementById('successCard').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
