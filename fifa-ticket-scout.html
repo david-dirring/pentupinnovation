@@ -325,6 +325,55 @@
             margin-top: 0.75rem;
         }
 
+        /* MOBILE FEATURE CARDS (hidden on desktop) */
+        .mobile-features { display: none; }
+        .mobile-tier-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .mobile-tier-header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .mobile-tier-header .tier-label {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .mobile-tier-header .tier-price-tag {
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+        .mobile-tier-body {
+            padding: 0.5rem 0;
+        }
+        .mobile-feature-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .mobile-feature-row:last-child { border-bottom: none; }
+        .mobile-feature-row .feat-name {
+            color: var(--slate);
+            flex: 1;
+            padding-right: 0.75rem;
+        }
+        .mobile-feature-row .feat-value {
+            flex-shrink: 0;
+            text-align: center;
+            min-width: 24px;
+        }
+
         /* PRICING CARDS */
         .pricing-grid {
             display: grid;
@@ -540,7 +589,9 @@
             .trust-item { flex: 1 1 45%; }
             .screenshots { grid-template-columns: 1fr; gap: 1.5rem; }
             .section-title { font-size: 1.75rem; }
-            .table-scroll-hint { display: block; }
+            .table-wrapper { display: none; }
+            .table-scroll-hint { display: none; }
+            .mobile-features { display: block; max-width: 500px; margin: 0 auto; }
             .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
             .btn-outline-white { margin-left: 0; }
             .cta h2 { font-size: 1.75rem; }
@@ -747,6 +798,62 @@
         </table>
     </div>
     <div class="table-scroll-hint">Scroll sideways to see all plans &rarr;</div>
+
+    <!-- Mobile-only stacked cards -->
+    <div class="mobile-features">
+
+        <div class="mobile-tier-card">
+            <div class="mobile-tier-header">
+                <span class="tier-label">Free</span>
+                <span class="tier-price-tag">$0</span>
+            </div>
+            <div class="mobile-tier-body">
+                <div class="mobile-feature-row"><span class="feat-name">Live seat capture &amp; dashboard</span><span class="feat-value check">&#10003;</span></div>
+                <div class="mobile-feature-row"><span class="feat-name">Auto-scan (Balanced speed)</span><span class="feat-value check">&#10003;</span></div>
+                <div class="mobile-feature-row"><span class="feat-name">Category filters, histograms, best deals</span><span class="feat-value check">&#10003;</span></div>
+                <div class="mobile-feature-row"><span class="feat-name">CSV export</span><span class="feat-value check">&#10003;</span></div>
+                <div class="mobile-feature-row"><span class="feat-name">Contribute to crowdsourced data</span><span class="feat-value check">&#10003;</span></div>
+            </div>
+        </div>
+
+        <div class="mobile-tier-card" style="border-color: var(--blue);">
+            <div class="mobile-tier-header">
+                <span class="tier-label">Scout Pro</span>
+                <span class="tier-price-tag">$19.99</span>
+            </div>
+            <div class="mobile-tier-body">
+                <div class="mobile-feature-row"><span class="feat-name">Everything in Free, plus:</span><span class="feat-value"></span></div>
+                <div class="mobile-feature-row"><span class="feat-name">Stealth, Cautious &amp; Aggressive scan speeds</span><span class="feat-value check">&#10003;</span></div>
+                <div class="mobile-feature-row"><span class="feat-name">Multi-tab (multiple matches at once)</span><span class="feat-value check">&#10003;</span></div>
+                <div class="mobile-feature-row"><span class="feat-name">View your own scan history</span><span class="feat-value"><span class="badge-soon">Coming Soon</span></span></div>
+            </div>
+        </div>
+
+        <div class="mobile-tier-card" style="border-color: var(--green);">
+            <div class="mobile-tier-header" style="background: var(--green);">
+                <span class="tier-label">Pro + Web &mdash; Most Popular</span>
+                <span class="tier-price-tag">$29.99</span>
+            </div>
+            <div class="mobile-tier-body">
+                <div class="mobile-feature-row"><span class="feat-name">Everything in Scout Pro, plus:</span><span class="feat-value"></span></div>
+                <div class="mobile-feature-row"><span class="feat-name">View crowdsourced market data</span><span class="feat-value"><span class="badge-soon">Coming Soon</span></span></div>
+                <div class="mobile-feature-row"><span class="feat-name">Web dashboard with price trends</span><span class="feat-value"><span class="badge-soon">Coming Soon</span></span></div>
+            </div>
+        </div>
+
+        <div class="mobile-tier-card" style="border-color: var(--red);">
+            <div class="mobile-tier-header" style="background: var(--red);">
+                <span class="tier-label">Pro + Web + Alerts</span>
+                <span class="tier-price-tag">$49.99</span>
+            </div>
+            <div class="mobile-tier-body">
+                <div class="mobile-feature-row"><span class="feat-name">Everything in Pro + Web, plus:</span><span class="feat-value"></span></div>
+                <div class="mobile-feature-row"><span class="feat-name">Email alerts for price drops</span><span class="feat-value"><span class="badge-soon">Coming Soon</span></span></div>
+                <div class="mobile-feature-row"><span class="feat-name">First access to new features</span><span class="feat-value check">&#10003;</span></div>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <!-- PRICING CARDS -->
