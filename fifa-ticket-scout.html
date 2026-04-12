@@ -629,8 +629,9 @@
         <a href="https://github.com/david-dirring/fifa-ticket-scout" target="_blank" rel="noopener noreferrer" class="btn btn-green">Install Free from GitHub</a>
         <a href="#pricing" class="btn btn-outline-white">See Pro Plans</a>
     </div>
-    <details class="install-inline">
+    <details class="install-inline" id="install">
         <summary>How to install (takes under a minute)</summary>
+        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; text-align: center;">Already have an older version installed? Remove it first at <code>chrome://extensions</code> before proceeding.</div>
         <div class="install-option-label easiest">Option A &mdash; No git required (easiest)</div>
         <ol class="install-ol">
             <li>On the <a href="https://github.com/david-dirring/fifa-ticket-scout" target="_blank" rel="noopener noreferrer">GitHub repo</a>, click the green <strong>Code</strong> button &rarr; <strong>Download ZIP</strong></li>
@@ -931,5 +932,16 @@
     &copy; 2026 Pent-Up Innovation. FIFA Ticket Scout is not affiliated with FIFA or any official ticketing partner.
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (location.hash === '#install') {
+        var d = document.getElementById('install');
+        if (d) {
+            d.open = true;
+            setTimeout(function() { d.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+        }
+    }
+});
+</script>
 </body>
 </html>
