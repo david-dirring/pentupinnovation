@@ -464,6 +464,69 @@
         .card-red { border-color: var(--red); }
         .card-red:hover { box-shadow: 0 12px 40px rgba(200,16,46,0.12); }
 
+        /* TESTIMONIALS */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.2s;
+        }
+        .testimonial-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .testimonial-card .quote {
+            font-size: 0.9rem;
+            color: var(--slate);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card .quote::before {
+            content: "\201C";
+            font-size: 2rem;
+            color: var(--green);
+            font-weight: 800;
+            line-height: 0;
+            position: relative;
+            top: 0.35rem;
+            margin-right: 0.15rem;
+        }
+        .testimonial-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .testimonial-author {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .testimonial-author a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+        .testimonial-author a:hover { text-decoration: underline; }
+        .testimonial-context {
+            font-size: 0.72rem;
+            color: var(--gray);
+            margin-top: 0.2rem;
+        }
+        .testimonial-upvotes {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--red);
+            white-space: nowrap;
+        }
+
         /* INLINE INSTALL GUIDE */
         .install-inline {
             max-width: 580px;
@@ -588,6 +651,7 @@
             .trust { gap: 1.25rem; padding: 1.25rem 5%; }
             .trust-item { flex: 1 1 45%; }
             .screenshots { grid-template-columns: 1fr; gap: 1.5rem; }
+            .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; }
             .section-title { font-size: 1.75rem; }
             .table-wrapper { display: none; }
             .table-scroll-hint { display: none; }
@@ -621,7 +685,6 @@
 
 <!-- HERO -->
 <section class="hero">
-    <img src="fifa-ticket-scout/icon128.png" alt="FIFA Ticket Scout" class="hero-icon">
     <h1>FIFA Ticket Scout</h1>
     <div class="hero-tagline">Every seat. Every price. At a glance.</div>
     <p>A Chrome extension that tracks real-time resale ticket prices for FIFA World Cup 2026. Stop overpaying &mdash; see every available seat, price distribution, and best deals instantly.</p>
@@ -648,35 +711,121 @@
             <li>Click <strong>Load unpacked</strong> and select the <code>extension</code> folder</li>
             <li>Open any match seat map and click the extension icon</li>
         </ol>
-        <div class="install-store-note">Chrome Web Store listing coming soon</div>
+        <hr class="install-divider">
+        <div class="install-option-label dev">To uninstall</div>
+        <ol class="install-ol">
+            <li>Open <code>chrome://extensions</code> in Chrome</li>
+            <li>Find <strong>FIFA Ticket Scout</strong> and click <strong>Remove</strong></li>
+        </ol>
+        <div class="install-store-note">Chrome Web Store listing will be updated soon</div>
     </details>
 </section>
 
 <!-- TRUST BAR -->
 <div class="trust">
     <div class="trust-item">
-        <div class="trust-icon green">&#9889;</div>
-        <div class="trust-text">Real-Time Prices</div>
+        <div class="trust-icon green">&#11014;</div>
+        <div class="trust-text">583 Upvotes</div>
     </div>
     <div class="trust-item">
-        <div class="trust-icon blue">&#128200;</div>
-        <div class="trust-text">Price Histograms</div>
+        <div class="trust-icon blue">&#128065;</div>
+        <div class="trust-text">138K+ Views</div>
     </div>
     <div class="trust-item">
-        <div class="trust-icon green">&#128176;</div>
-        <div class="trust-text">100% Free to Start</div>
+        <div class="trust-icon green">&#128172;</div>
+        <div class="trust-text">265 Comments</div>
     </div>
     <div class="trust-item">
-        <div class="trust-icon blue">&#128190;</div>
-        <div class="trust-text">CSV Export</div>
+        <div class="trust-icon gold">&#127942;</div>
+        <div class="trust-text">Reddit Gold</div>
+    </div>
+    <div class="trust-item">
+        <div class="trust-icon green">&#127760;</div>
+        <div class="trust-text">Thousands of Active Daily Users</div>
     </div>
 </div>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+    <div class="section-label">What Fans Are Saying</div>
+    <h2 class="section-title">Real fans. Real savings. Real tickets.</h2>
+    <p class="section-sub">Don't take our word for it &mdash; here's what the community is saying on Reddit.</p>
+    <div class="testimonials-grid">
+
+        <div class="testimonial-card">
+            <div class="quote"><strong>I'm going to the World Cup!</strong> Cus of the chrome extension they made I was able to get a ticket at a <strong>great price!</strong> I have been very discouraged with all the scalpers and insane ticket prices so <strong>I'm over the moon</strong> that I was able to get a CAT 1 ticket for <strong>near face value.</strong></div>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-author"><a href="https://www.reddit.com/r/WorldCup2026Tickets/comments/1sfd2lh/im_going_to_the_world_cup_thank_you_reddit_for/" target="_blank" rel="noopener noreferrer">u/Young4Eternity</a></div>
+                    <div class="testimonial-context">France vs Iraq &middot; CAT 1 &middot; $550</div>
+                </div>
+                <div class="testimonial-upvotes">&#11014; 148</div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="quote">Thanks to the FIFA Ticket Scout Web Extension I <strong>finally got Argentina vs Austria tickets!!</strong> I managed to get tickets <strong>$300 lower than the average price</strong> for CAT2!</div>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-author"><a href="https://www.reddit.com/r/WorldCup2026Tickets/comments/1sivedk/thanks_to_the_fifa_ticket_scout_web_extension_i/" target="_blank" rel="noopener noreferrer">u/OldFaithlessness9876</a></div>
+                    <div class="testimonial-context">Argentina vs Austria &middot; Saved $300</div>
+                </div>
+                <div class="testimonial-upvotes">&#11014; 21</div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="quote">Amazing that <strong>you did in a few days by yourself</strong> what FIFA couldn't do with <strong>all the resources in the world.</strong></div>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-author"><a href="https://www.reddit.com/r/WorldCup2026Tickets/comments/1sc65o8/this_tool_shows_you_every_resale_seat_and_price/?limit=5000" target="_blank" rel="noopener noreferrer">u/savannah_samson</a></div>
+                    <div class="testimonial-context">Original launch thread</div>
+                </div>
+                <div class="testimonial-upvotes">&#11014; 90</div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="quote">Awesome extension. You <strong>saved me countless hours.</strong> I was able to <strong>instantly find tix that dropped $100s less</strong> than all other tix available. They were priced to sell.</div>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-context">Buy Me a Coffee supporter</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="quote">Just <strong>secured a Cat 2 ticket</strong> to Norway vs Iraq at Boston Stadium for <strong>$355!</strong> I spent the last couple of days refreshing the marketplace but finally secured one. <strong>Don't get discouraged!</strong></div>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-author"><a href="https://www.reddit.com/r/WorldCup2026Tickets/comments/1sc65o8/this_tool_shows_you_every_resale_seat_and_price/?limit=5000" target="_blank" rel="noopener noreferrer">u/Sebashperi</a></div>
+                    <div class="testimonial-context">Norway vs Iraq &middot; CAT 2 &middot; $355</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-card">
+            <div class="quote">This extension <strong>absolutely did the job for me!</strong> Secured <strong>x4 tickets for a friend and x2 for myself.</strong> Thank you so much!</div>
+            <div class="testimonial-footer">
+                <div>
+                    <div class="testimonial-author"><a href="https://www.reddit.com/r/WorldCup2026Tickets/comments/1sc65o8/this_tool_shows_you_every_resale_seat_and_price/?limit=5000" target="_blank" rel="noopener noreferrer">u/upsetmuscular</a></div>
+                    <div class="testimonial-context">6 tickets secured</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
 <!-- SCREENSHOTS -->
 <section class="section" id="screenshots">
     <div class="section-label">See It In Action</div>
-    <h2 class="section-title">Your full-stadium pricing dashboard.</h2>
+    <h2 class="section-title">The dashboard FIFA should have built.</h2>
     <p class="section-sub">Browse any match on the FIFA resale site and instantly see every available seat, price breakdown, and best deals &mdash; all without clicking through sections.</p>
+    <div class="screenshot" style="max-width: 1000px; margin: 0 auto 1.5rem;">
+        <img src="fifa-ticket-scout/screenshot-live-match.png" alt="FIFA Ticket Scout live on Belgium vs IR Iran — 1,806 seats scanned, cheapest at $54.13" loading="lazy">
+        <div class="screenshot-caption">Live scan: Belgium vs IR Iran &mdash; 1,806 seats found, cheapest at $54.13</div>
+    </div>
     <div class="screenshots">
         <div class="screenshot">
             <img src="fifa-ticket-scout/screenshot-1-dashboard.png" alt="FIFA Ticket Scout dashboard showing match pricing alongside the FIFA seat map" loading="lazy">
@@ -874,7 +1023,7 @@
             <ul>
                 <li>Everything in Free</li>
                 <li>Stealth, Cautious &amp; Aggressive scan speeds</li>
-                <li>Multi-tab support for multiple matches</li>
+                <li>Multi-tab support</li>
             </ul>
             <a href="https://daviddirring.gumroad.com/l/fhwtc?layout=profile" target="_blank" rel="noopener noreferrer" class="btn btn-blue">Get Scout Pro</a>
         </div>
@@ -920,6 +1069,33 @@
         <a href="https://github.com/david-dirring/fifa-ticket-scout" target="_blank" rel="noopener noreferrer" class="btn btn-green">Install Free from GitHub</a>
         <a href="#pricing" class="btn btn-outline-white">Upgrade to Pro</a>
     </div>
+    <details class="install-inline" style="margin-top: 2rem;">
+        <summary>How to install (takes under a minute)</summary>
+        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.75rem; text-align: center;">Already have an older version installed? Remove it first at <code>chrome://extensions</code> before proceeding.</div>
+        <div class="install-option-label easiest">Option A &mdash; No git required (easiest)</div>
+        <ol class="install-ol">
+            <li>On the <a href="https://github.com/david-dirring/fifa-ticket-scout" target="_blank" rel="noopener noreferrer">GitHub repo</a>, click the green <strong style="background:#2da44e;color:#fff;padding:0.1rem 0.45rem;border-radius:4px;font-size:0.75rem;">Code</strong> button &rarr; <strong>Download ZIP</strong></li>
+            <li>Unzip the folder</li>
+            <li>Open <code>chrome://extensions</code> and enable <strong>Developer mode</strong></li>
+            <li>Click <strong>Load unpacked</strong> and select the <code>extension</code> subfolder</li>
+            <li>Open any match on the <a href="https://fwc26-resale-usd.tickets.fifa.com" target="_blank" rel="noopener noreferrer">FIFA resale site</a> and click the extension icon</li>
+        </ol>
+        <hr class="install-divider">
+        <div class="install-option-label dev">Option B &mdash; With git</div>
+        <ol class="install-ol">
+            <li>Run <code>git clone https://github.com/david-dirring/fifa-ticket-scout.git</code></li>
+            <li>Open <code>chrome://extensions</code> and enable <strong>Developer mode</strong></li>
+            <li>Click <strong>Load unpacked</strong> and select the <code>extension</code> folder</li>
+            <li>Open any match seat map and click the extension icon</li>
+        </ol>
+        <hr class="install-divider">
+        <div class="install-option-label dev">To uninstall</div>
+        <ol class="install-ol">
+            <li>Open <code>chrome://extensions</code> in Chrome</li>
+            <li>Find <strong>FIFA Ticket Scout</strong> and click <strong>Remove</strong></li>
+        </ol>
+        <div class="install-store-note">Chrome Web Store listing will be updated soon</div>
+    </details>
 </section>
 
 <footer>
